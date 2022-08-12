@@ -308,6 +308,15 @@ export default {
     tabindex: {
       type: Number,
       default: 0
+    },
+    /**
+       * Set true to always show the input field (with placeholder or input)
+       * @default false
+       * @type {Boolean}
+       */
+    alwaysShowInput: {
+      type: Boolean,
+      default: false,
     }
   },
   computed: {
@@ -345,7 +354,8 @@ export default {
     inputStyle () {
       if (
         this.searchable ||
-          (this.multiple && this.modelValue && this.modelValue.length)
+          (this.multiple && this.modelValue && this.modelValue.length) ||
+          this.alwaysShowInput
       ) {
         // Hide input by setting the width to 0 allowing it to receive focus
         return this.isOpen
